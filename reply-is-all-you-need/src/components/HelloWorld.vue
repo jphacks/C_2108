@@ -8,6 +8,7 @@
         vue-cli documentation
       </a>
       .
+      <v-btn>aaa</v-btn>
     </p>
     <h3>Installed CLI Plugins</h3>
     <ul>
