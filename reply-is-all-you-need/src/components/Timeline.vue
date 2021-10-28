@@ -2,8 +2,10 @@
   <div>
     <v-btn @click="updateComments">リスト更新</v-btn>
     <div v-for="comment in comments" :key="comment.date">
-      {{ comment.input }}
-      {{ comment.date }}
+      <v-card>
+        <v-card-text class="text-left">{{ comment.date }}</v-card-text>
+        <v-card-title class="justify-center">{{ comment.input }}</v-card-title>
+      </v-card>
     </div>
   </div>
 </template>
