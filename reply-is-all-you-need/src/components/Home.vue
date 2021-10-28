@@ -29,7 +29,7 @@ export default {
       firebase
         .auth()
         .signOut()
-        .then(() => console.log('Sign out.'))
+        .then()
     },
   },
 }
