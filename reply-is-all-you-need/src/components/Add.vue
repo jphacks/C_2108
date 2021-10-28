@@ -1,11 +1,19 @@
 <template>
-  <div>
-    <h1>MEMO</h1>
+  <v-container>
     <div>
-      <textarea v-model="input" />
-      <button @click="addMemo">追加</button>
+      <v-app-bar color="gray accent-4" dark>
+        <v-app-bar-nav-icon />
+
+        <v-toolbar-title>新規メモ</v-toolbar-title>
+
+        <div class="flex-grow-1" />
+      </v-app-bar>
     </div>
-  </div>
+    <div>
+      <v-textarea v-model="input" solo label="メモ" />
+      <v-btn @click="addMemo">追加</v-btn>
+    </div>
+  </v-container>
 </template>
 
 <script>
