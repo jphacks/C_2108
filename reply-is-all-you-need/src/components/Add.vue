@@ -2,40 +2,34 @@
   <div>
     <h1>MEMO</h1>
     <div>
-      <textarea v-model="input" />
+      <textarea v-model="inputTxt" />
       <button @click="addMemo">追加</button>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase'
-import 'firebase/firestore'
+import firebase, { db } from '@/plugins/firebase'
 
 export default {
   name: 'Add',
-  data: function() {
+  data() {
     return {
-      db: null,
-      input: '',
+      inputTxt: '',
     }
-  },
-  created: function() {
-    this.db = firebase.firestore()
   },
   methods: {
     addMemo: function() {
       // memosコレクションにドキュメントを追加
-      this.db
-        .collection('memos')
+      db.collection('memos')
         .add({
-          input: this.input,
+          input: this.inputTxt,
           date: firebase.firestore.Timestamp.now(),
         })
-        .then(function() {
-          this.input = ''
+        .then(() => {
+          this.inputTxt = ''
         })
-        .catch(function() {
+        .catch(() => {
           // エラー時の処理
         })
     },
