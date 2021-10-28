@@ -3,6 +3,7 @@
     <Appbar />
     <v-main>
       <Add />
+      <Timeline />
     </v-main>
   </v-app>
 </template>
@@ -11,12 +12,14 @@
 import firebase from 'firebase/app'
 import Appbar from '@/components/Appbar.vue'
 import Add from '@/components/Add.vue'
+import Timeline from '@/components/Timeline.vue'
 
 export default {
   name: 'App',
   components: {
     Appbar,
     Add,
+    Timeline,
   },
   data() {
     return {
