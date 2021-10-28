@@ -2,10 +2,6 @@
   <div>
     <h1>MEMO</h1>
     <div>
-      <!-- <ul> -->
-      <!-- <li><input v-model="input" /></li>
-        <li><button @click="addMemo">追加</button></li> -->
-      <!-- </ul> -->
       <textarea v-model="input" />
       <button @click="addMemo">追加</button>
     </div>
@@ -29,18 +25,14 @@ export default {
   },
   methods: {
     addMemo: function() {
-      //   const _this = this
-
       // memosコレクションにドキュメントを追加
       this.db
         .collection('memos')
         .add({
-          //   input: _this.input,
           input: this.input,
+          date: firebase.firestore.Timestamp.now(),
         })
         .then(function() {
-          // 追加に成功したら、inputを空にする
-          //   _this.input = ''
           this.input = ''
         })
         .catch(function() {
