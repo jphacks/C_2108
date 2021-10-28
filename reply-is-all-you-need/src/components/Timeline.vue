@@ -6,6 +6,8 @@
         <v-card-text class="text-left">{{ comment.date }}</v-card-text>
         <v-card-title class="justify-center">{{ comment.input }}</v-card-title>
       </v-card>
+      <v-btn @click="showReply(comment.date)">リプ表示</v-btn>
+      <div v-show="reply" v-if="id == comment.date">ハロー！</div>
     </div>
   </div>
 </template>
@@ -18,6 +20,8 @@ export default {
   data() {
     return {
       comments: [],
+      reply: false,
+      id: '',
     }
   },
   methods: {
@@ -32,7 +36,10 @@ export default {
             this.comments.push(doc.data())
           })
         })
-      //  this.comments = db.collection('memos').orderBy('date')
+    },
+    showReply: function(date) {
+      this.reply = !this.reply
+      this.id = date
     },
   },
 }
