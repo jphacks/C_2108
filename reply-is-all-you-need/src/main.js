@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+// UIコンポーネントの読み込み
+import vuetify from './plugins/vuetify'
 import firebase from 'firebase'
 
 Vue.config.productionTip = false
@@ -17,5 +18,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 new Vue({
+  vuetify,
   render: h => h(App),
 }).$mount('#app')
