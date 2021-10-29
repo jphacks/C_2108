@@ -29,7 +29,7 @@
                     <v-btn
                       icon
                       color="rgba(255, 255, 240, 0.8)"
-                      @click="deleteMemo(comment.date)"
+                      @click="deleteMemo(comment.memoId)"
                     >
                       <v-icon>mdi-delete-outline</v-icon>
                     </v-btn>
@@ -84,22 +84,13 @@ export default {
           })
         })
     },
-    showReply: function(date) {
+    showReply: function() {
       this.reply = !this.reply
-      // this.id = moment(date.toDate()).format()
     },
-    deleteMemo: function(date) {
-      // console.log(date.seconds)
-      // db.collection('memos')
-      //   .where('date', '==', date)
-      //   .get()
-      //   .then(doc => {
-      //     console.log(doc.data())
-      //   })
-      //   .catch(() => {})
-      // db.collection('memos')
-      //   .doc(docName)
-      //   .delete()
+    deleteMemo: function(memoId) {
+      db.collection('memos')
+        .doc(memoId)
+        .delete()
     },
   },
 }
