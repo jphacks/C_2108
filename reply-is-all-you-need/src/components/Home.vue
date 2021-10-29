@@ -10,7 +10,7 @@
         </template>
         <v-app-bar-title class="home">Reply is All you need</v-app-bar-title>
         <v-spacer />
-        <v-btn class="mt-3" text>
+        <v-btn class="mt-3" text @click="logout()">
           log out
         </v-btn>
       </v-app-bar>
@@ -44,9 +44,10 @@
 </template>
 
 <script>
-import firebase from 'firebase/app'
 import Add from '@/components/Add.vue'
 import Timeline from '@/components/Timeline.vue'
+
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -62,12 +63,11 @@ export default {
   },
   mounted() {},
   methods: {
-    logout: function() {
-      firebase
-        .auth()
-        .signOut()
-        .then()
+    logout() {
+      this.deleteLoginUser()
+      this.$router.push({ name: 'Welcome' })
     },
+    ...mapActions(['deleteLoginUser']),
   },
 }
 </script>
@@ -79,7 +79,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .bg::before {
   content: '';

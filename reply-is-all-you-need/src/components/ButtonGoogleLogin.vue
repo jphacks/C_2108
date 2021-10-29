@@ -22,7 +22,7 @@ export default {
     }
   },
   methods: {
-    googleLogin: function() {
+    googleLogin() {
       firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider())
     },
   },
