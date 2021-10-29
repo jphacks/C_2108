@@ -4,11 +4,11 @@
       リスト更新
     </v-btn>
     <div v-for="comment in comments" :key="comment.date.seconds">
-      <v-card color="grey lighten-4">
+      <v-card class="line" color="white">
         <v-card-text class="text-left">{{ comment.date.toDate() }}</v-card-text>
         <v-card-title class="justify-center">{{ comment.input }}</v-card-title>
         <v-card-text class="text-right">
-          <v-btn icon color="grey darken-3" @click="showReply(comment.date)">
+          <v-btn icon color="grey darken-4" @click="showReply(comment.date)">
             <v-icon>mdi-message-alert</v-icon></v-btn
           >
           <v-btn icon @click="deleteMemo(comment.date)">
@@ -70,3 +70,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.line {
+  opacity: 0.3;
+}
+</style>
