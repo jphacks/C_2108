@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import firebase from '@/plugins/firebase'
+import firebase, { db } from '@/plugins/firebase'
 
 Vue.use(Vuex)
 
@@ -30,7 +30,22 @@ export default new Vuex.Store({
       commit('setCurrentLesson', currentLesson)
     },
     async setLoginUser({ commit }, user) {
-      commit('setLoginUser', user)
+      await db
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then(async doc => {
+          if (!doc.exists) {
+            await db
+              .collection('users')
+              .doc(user.uid)
+              .set({
+                userId: user.uid,
+                userIcon: user.photoURL,
+              })
+          }
+          commit('setLoginUser', user)
+        })
     },
     signIn() {},
     signOut() {},
