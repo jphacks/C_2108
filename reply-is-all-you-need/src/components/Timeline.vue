@@ -14,7 +14,7 @@
                 {{ comment.input }}
               </v-card-title>
 
-              <v-list-item-action>
+              <v-list-item-action expend="true">
                 <v-row justify="space-between">
                   <v-col cols="2">
                     <v-btn
@@ -43,12 +43,12 @@
                   <v-col cols="1" />
                 </v-row>
               </v-list-item-action>
+              <v-card color="rgba(0, 0, 0, 0.2)">
+                <div v-show="reply" v-if="id == comment.date">
+                  <v-card-title class="comment">ハロー！</v-card-title>
+                </div>
+              </v-card>
             </v-list-item-content>
-            <v-card color="grey lighten-3">
-              <div v-show="reply" v-if="id == comment.date">
-                <v-card-text class="justify-center">ハロー！</v-card-text>
-              </div>
-            </v-card>
           </v-row>
         </v-list-item>
       </template>
@@ -119,6 +119,10 @@ export default {
   opacity: 0.9;
 }
 .list {
+  color: #eeffff;
+  opacity: 0.9;
+}
+.comment {
   color: #eeffff;
   opacity: 0.9;
 }
