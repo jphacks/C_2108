@@ -23,6 +23,7 @@
 
 <script>
 import firebase, { db } from '@/plugins/firebase'
+import { mapState } from 'vuex'
 import axios from 'axios'
 
 export default {
@@ -32,10 +33,14 @@ export default {
       inputTxt: '',
     }
   },
+  computed: {
+    ...mapState(['user']),
+  },
   methods: {
     async addMemo() {
       const reqUrl = process.env.VUE_APP_API_URL
       const textObj = { input_text: this.inputTxt }
+      const newMemoRef = db.collection('memos').doc()
       await axios
         .post(reqUrl, textObj, {
           headers: {
@@ -49,8 +54,10 @@ export default {
           }
         })
         .then(res => {
-          db.collection('memos')
-            .add({
+          newMemoRef
+            .set({
+              userId: this.user.uid,
+              memoId: newMemoRef.id,
               input: this.inputTxt,
               date: firebase.firestore.Timestamp.now(),
               replyTexts: res.data.replies,
