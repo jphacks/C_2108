@@ -3,6 +3,7 @@
     <v-btn rounded color="grey lighten-4" @click="updateComments">
       リスト更新
     </v-btn>
+
     <v-list>
       <template v-for="(comment, index) in comments">
         <v-divider :key="index" />
@@ -99,3 +100,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.line {
+  opacity: 0.3;
+}
+</style>
