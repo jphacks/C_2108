@@ -1,32 +1,59 @@
 <template>
-  <div>
+  <v-container>
     <v-btn rounded color="grey lighten-4" @click="updateComments">
       リスト更新
     </v-btn>
-    <div v-for="comment in comments" :key="comment.date.seconds">
-      <v-card class="line" color="white">
-        <v-card-text class="text-left">{{ comment.date.toDate() }}</v-card-text>
-        <v-card-title class="justify-center">{{ comment.input }}</v-card-title>
-        <v-card-text class="text-right">
-          <v-btn icon color="grey darken-4" @click="showReply(comment.date)">
-            <v-icon>mdi-message-alert</v-icon></v-btn
-          >
-          <v-btn icon @click="deleteMemo(comment.date)">
-            <v-icon>mdi-delete-forever-outline</v-icon>
-          </v-btn>
-        </v-card-text>
-      </v-card>
-      <v-card color="grey lighten-3">
-        <div v-show="reply" v-if="id == comment.date">
-          <v-card-text class="justify-center">ハロー！</v-card-text>
-        </div>
-      </v-card>
-    </div>
-  </div>
+
+    <v-list>
+      <template v-for="(comment, index) in comments">
+        <v-divider :key="index" />
+        <v-list-item :key="index">
+          <v-row>
+            <v-list-item-content color="grey lighten-4">
+              <v-card-title class="justify-center">
+                {{ comment.input }}
+              </v-card-title>
+
+              <v-list-item-action class="text-right">
+                <v-row justify="space-between">
+                  <v-col cols="2">
+                    <v-btn
+                      icon
+                      color="grey darken-3"
+                      @click="showReply(comment.date)"
+                    >
+                      <v-icon>mdi-comment-outline</v-icon></v-btn
+                    >
+                  </v-col>
+                  <v-col cols="2">
+                    <v-btn icon @click="deleteMemo(comment.date)">
+                      <v-icon>mdi-delete-outline</v-icon>
+                    </v-btn>
+                  </v-col>
+                  <v-col align-self="center">
+                    <v-list-item-subtitle class="text-right">
+                      {{ comment.date }}
+                    </v-list-item-subtitle>
+                  </v-col>
+                  <v-col cols="1" />
+                </v-row>
+              </v-list-item-action>
+            </v-list-item-content>
+            <v-card color="grey lighten-3">
+              <div v-show="reply" v-if="id == comment.date">
+                <v-card-text class="justify-center">ハロー！</v-card-text>
+              </div>
+            </v-card>
+          </v-row>
+        </v-list-item>
+      </template>
+    </v-list>
+  </v-container>
 </template>
 
 <script>
 import { db } from '@/plugins/firebase'
+import moment from 'moment'
 
 export default {
   name: 'Timeline',
@@ -45,14 +72,17 @@ export default {
         .get()
         .then(snapShot => {
           snapShot.forEach(doc => {
-            // console.log(doc.data())
-            this.comments.push(doc.data())
+            const comment = doc.data()
+            comment.date = moment(doc.data().date.toDate()).format(
+              'YYYY/MM/DD hh:mm:ss'
+            )
+            this.comments.push(comment)
           })
         })
     },
     showReply: function(date) {
       this.reply = !this.reply
-      this.id = date
+      // this.id = moment(date.toDate()).format()
     },
     deleteMemo: function(date) {
       // console.log(date.seconds)

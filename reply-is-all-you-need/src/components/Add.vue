@@ -1,31 +1,23 @@
 <template>
   <div>
-    <h1>MEMO</h1>
-    <div>
-      <v-card
-        width="600px"
-        height="395px"
-        class="mx-auto mt-5"
-        color="grey lighten-4"
-      >
-        <v-card-title class="justify-center">
-          <v-card width="400px" height="300px" class="mx-auto mt-5">
-            <v-textarea
-              v-model="inputTxt"
-              outlined
-              label="メモ内容"
-              width="300px"
-              height="300px"
-            />
-          </v-card>
-        </v-card-title>
-        <v-card-text class="text-right">
-          <v-btn icon color="grey darken-3" @click="addMemo">
-            <v-icon>mdi-plus-circle</v-icon>
-          </v-btn>
-        </v-card-text>
-      </v-card>
-    </div>
+    <v-card width="100%" height="100%" class="mx-auto" color="grey lighten-4">
+      <v-card-title class="justify-center">
+        <v-card width="100%" height="100%" class="mx-auto">
+          <v-textarea
+            v-model="inputTxt"
+            outlined
+            label="メモ内容"
+            width="300px"
+            height="300px"
+          />
+        </v-card>
+      </v-card-title>
+      <v-card-actions class="text-right">
+        <v-btn icon color="grey darken-3" @click="addMemo">
+          <v-icon>mdi-plus-circle</v-icon>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
