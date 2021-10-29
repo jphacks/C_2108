@@ -14,7 +14,7 @@
                 {{ comment.input }}
               </v-card-title>
 
-              <v-list-item-action>
+              <v-list-item-action expend="true">
                 <v-row justify="space-between">
                   <v-col cols="2">
                     <v-btn
@@ -36,18 +36,19 @@
                   </v-col>
                   <v-col align-self="center">
                     <v-card-text class="text-right">
-                      {{ comment.date }}
+                      <!-- {{ comment.date }} -->
+                      {{ comment.formattedDate }}
                     </v-card-text>
                   </v-col>
                   <v-col cols="1" />
                 </v-row>
               </v-list-item-action>
+              <v-card color="rgba(0, 0, 0, 0.2)">
+                <div v-show="reply" v-if="id == comment.date">
+                  <v-card-title class="comment">ハロー！</v-card-title>
+                </div>
+              </v-card>
             </v-list-item-content>
-            <v-card color="grey lighten-3">
-              <div v-show="reply" v-if="id == comment.date">
-                <v-card-text class="justify-center">ハロー！</v-card-text>
-              </div>
-            </v-card>
           </v-row>
         </v-list-item>
       </template>
@@ -66,6 +67,7 @@ export default {
       comments: [],
       reply: false,
       id: '',
+      // formattedDate: '',
     }
   },
   methods: {
@@ -77,7 +79,8 @@ export default {
         .then(snapShot => {
           snapShot.forEach(doc => {
             const comment = doc.data()
-            comment.date = moment(doc.data().date.toDate()).format(
+            // comment.date = doc.data().date
+            comment.formattedDate = moment(doc.data().date.toDate()).format(
               'YYYY/MM/DD hh:mm:ss'
             )
             this.comments.push(comment)
@@ -87,6 +90,7 @@ export default {
     showReply: function(date) {
       this.reply = !this.reply
       // this.id = moment(date.toDate()).format()
+      this.id = date
     },
     deleteMemo: function(date) {
       // console.log(date.seconds)
@@ -115,6 +119,10 @@ export default {
   opacity: 0.9;
 }
 .list {
+  color: #eeffff;
+  opacity: 0.9;
+}
+.comment {
   color: #eeffff;
   opacity: 0.9;
 }
