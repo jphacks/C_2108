@@ -1,23 +1,26 @@
 <template>
   <div>
-    <v-btn @click="updateComments">リスト更新</v-btn>
+    <v-btn rounded color="grey lighten-4" @click="updateComments">
+      リスト更新
+    </v-btn>
     <div v-for="comment in comments" :key="comment.date.seconds">
-      <v-card>
+      <v-card color="grey lighten-4">
         <v-card-text class="text-left">{{ comment.date.toDate() }}</v-card-text>
         <v-card-title class="justify-center">{{ comment.input }}</v-card-title>
         <v-card-text class="text-right">
           <v-btn icon color="grey darken-3" @click="showReply(comment.date)">
             <v-icon>mdi-message-alert</v-icon></v-btn
           >
+          <v-btn icon @click="deleteMemo(comment.date)">
+            <v-icon>mdi-delete-forever-outline</v-icon>
+          </v-btn>
         </v-card-text>
       </v-card>
-      <v-btn @click="showReply(comment.date)">リプ表示</v-btn>
-      <v-card color="blue-grey lighten-5">
+      <v-card color="grey lighten-3">
         <div v-show="reply" v-if="id == comment.date">
           <v-card-text class="justify-center">ハロー！</v-card-text>
         </div>
       </v-card>
-      <v-btn @click="deleteMemo(comment.date)">削除</v-btn>
     </div>
   </div>
 </template>
