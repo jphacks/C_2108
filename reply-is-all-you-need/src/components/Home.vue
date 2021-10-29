@@ -1,14 +1,14 @@
 <template>
   <v-app id="app">
     <div class="bg">
-      <v-app-bar dark hide-on-scroll prominent fade-img-on-scroll app>
+      <v-app-bar dark shrink-on-scroll prominent fade-img-on-scroll app>
         <template #img="{ props }">
           <v-img
             v-bind="props"
-            gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
+            gradient="to bottom left, rgba(0,5,30,.8), rgba(25,32,72,.7)"
           />
         </template>
-        <v-app-bar-title>Reply is All you need</v-app-bar-title>
+        <v-app-bar-title>Memo</v-app-bar-title>
         <v-spacer />
         <v-btn class="mt-3" text>
           log out
@@ -16,7 +16,7 @@
       </v-app-bar>
 
       <v-main>
-        <v-dialog v-model="dialog" scrollable="false">
+        <v-dialog v-model="dialog">
           <template #activator="{ on, attrs }">
             <v-btn
               class="mb-12"

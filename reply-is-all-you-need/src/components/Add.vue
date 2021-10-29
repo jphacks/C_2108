@@ -23,6 +23,7 @@
 
 <script>
 import firebase, { db } from '@/plugins/firebase'
+import axios from 'axios'
 
 export default {
   name: 'Add',
@@ -32,18 +33,32 @@ export default {
     }
   },
   methods: {
-    addMemo: function() {
-      // memosコレクションにドキュメントを追加
-      db.collection('memos')
-        .add({
-          input: this.inputTxt,
-          date: firebase.firestore.Timestamp.now(),
+    async addMemo() {
+      const reqUrl = process.env.VUE_APP_API_URL
+      const textObj = { input_text: this.inputTxt }
+      await axios
+        .post(reqUrl, textObj, {
+          headers: {
+            // eslint-disable-next-line
+            'accept': 'application/json',
+            // eslint-disable-next-line
+            'Access-Control-Allow-Origin': '*',
+            // eslint-disable-next-line
+            'Content-Type': 'application/json'
+            // eslint-disable-next-line
+          }
         })
-        .then(() => {
-          this.inputTxt = ''
-        })
-        .catch(() => {
-          // エラー時の処理
+        .then(res => {
+          db.collection('memos')
+            .add({
+              input: this.inputTxt,
+              date: firebase.firestore.Timestamp.now(),
+              replyTexts: res.data.replies,
+            })
+            .then(() => {
+              this.inputTxt = ''
+            })
+            .catch(() => {})
         })
     },
   },
