@@ -14,12 +14,30 @@
           log out
         </v-btn>
       </v-app-bar>
+
       <v-main>
-        <Add />
+        <v-dialog v-model="dialog" scrollable="false">
+          <template #activator="{ on, attrs }">
+            <v-btn
+              class="mb-12"
+              color="pink"
+              v-bind="attrs"
+              fixed
+              bottom
+              dark
+              absolute
+              right
+              fab
+              v-on="on"
+            >
+              <v-icon>mdi-plus</v-icon>
+            </v-btn>
+          </template>
+
+          <Add />
+        </v-dialog>
+
         <Timeline />
-        <v-btn class="mb-12" color="pink" fixed bottom dark absolute right fab>
-          <v-icon>mdi-plus</v-icon>
-        </v-btn>
       </v-main>
     </div>
   </v-app>
@@ -38,6 +56,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       googleButtonRef: require('@/assets/google_signin_buttons/web/1x/btn_google_signin_light_normal_web.png'),
     }
   },
