@@ -8,7 +8,7 @@
             gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
           />
         </template>
-        <v-app-bar-title>Reply is All you need</v-app-bar-title>
+        <v-app-bar-title class="home">Reply is All you need</v-app-bar-title>
         <v-spacer />
         <v-btn class="mt-3" text>
           log out
@@ -99,5 +99,13 @@ export default {
   background-size: cover;
   background-position: center center;
   background-image: url('@/assets/background.jpeg');
+}
+
+@font-face {
+  font-family: 'MyFont2';
+  src: url(/Users/yanjini/Downloads/005.ttf);
+}
+.home {
+  font-family: MyFont2;
 }
 </style>
