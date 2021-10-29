@@ -1,14 +1,20 @@
 <template>
   <v-app id="app">
     <div class="bg">
-      <v-app-bar dark shrink-on-scroll prominent fade-img-on-scroll app>
+      <v-app-bar
+        max-height="70px"
+        dark
+        shrink-on-scroll
+        prominent
+        fade-img-on-scroll
+        app
+      >
         <template #img="{ props }">
           <v-img
             v-bind="props"
             gradient="to bottom left, rgba(0,5,30,.8), rgba(25,32,72,.7)"
           />
         </template>
-        <v-app-bar-title class="home">Reply is All you need</v-app-bar-title>
         <v-spacer />
         <v-btn class="mt-3" text @click="logout()">
           log out
@@ -80,23 +86,22 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.bg::before {
+/* .bg::before {
   content: '';
-  /* ↓暗いオーバーレイを半透明で配置 */
-  background-color: rgba(0, 0, 0, 0.6);
-  /* ↓全体を覆うように配置 */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   display: block;
-}
+} */
 .bg {
   height: 100vh; /* 全画面表示 */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-image: url('@/assets/background.jpeg');
+  background: linear-gradient(
+    to bottom left,
+    rgba(0, 5, 30, 0.8),
+    rgba(25, 32, 72, 0.7)
+  );
+  /* background-image: url('@/assets/background.jpeg'); */
 }
 </style>

@@ -37,23 +37,23 @@ export default {
 </script>
 
 <style>
-.bg::before {
+/* .bg::before {
   content: '';
-  /* ↓暗いオーバーレイを半透明で配置 */
-  background-color: rgba(0, 0, 0, 0.6);
-  /* ↓全体を覆うように配置 */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   display: block;
-}
+} */
 .bg {
   height: 100vh; /* 全画面表示 */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-image: url('@/assets/background.jpeg');
+
+  background: linear-gradient(
+    to bottom left,
+    rgba(0, 5, 30, 0.8),
+    rgba(25, 32, 72, 0.7)
+  );
+  /* background-image: url('@/assets/background.jpeg'); */
 }
 </style>
