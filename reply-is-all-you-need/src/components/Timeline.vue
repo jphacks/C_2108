@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-btn rounded color="grey lighten-4" @click="updateComments">
-      リスト更新</v-btn
-    >
+      リスト更新
+    </v-btn>
     <div v-for="comment in comments" :key="comment.date.seconds">
       <v-card color="grey lighten-4">
         <v-card-text class="text-left">{{ comment.date.toDate() }}</v-card-text>
