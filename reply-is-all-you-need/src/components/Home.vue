@@ -1,10 +1,12 @@
 <template>
   <v-app id="app">
-    <Appbar />
-    <v-main>
-      <Add />
-      <Timeline />
-    </v-main>
+    <div class="bg">
+      <Appbar />
+      <v-main>
+        <Add />
+        <Timeline />
+      </v-main>
+    </div>
   </v-app>
 </template>
 
@@ -46,5 +48,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.bg {
+  background-image: url('@/assets/background.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
 }
 </style>
