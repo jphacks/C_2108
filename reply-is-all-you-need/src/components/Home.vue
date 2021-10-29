@@ -1,15 +1,7 @@
 <template>
   <v-app id="app">
     <div class="bg">
-      <v-app-bar
-        color="#6A76AB"
-        dark
-        shrink-on-scroll
-        prominent
-        src="https://picsum.photos/1920/1080?random"
-        fade-img-on-scroll
-        app
-      >
+      <v-app-bar dark hide-on-scroll prominent fade-img-on-scroll app>
         <template #img="{ props }">
           <v-img
             v-bind="props"
@@ -19,7 +11,7 @@
         <v-app-bar-title>Reply is All you need</v-app-bar-title>
         <v-spacer />
         <v-btn class="mt-3" text>
-          Add memo
+          log out
         </v-btn>
       </v-app-bar>
       <v-main>
@@ -70,12 +62,23 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.bg::before {
+  content: '';
+  /* ↓暗いオーバーレイを半透明で配置 */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* ↓全体を覆うように配置 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .bg {
-  background-image: url('@/assets/background.jpeg');
-  background-position: center center;
+  height: 100vh; /* 全画面表示 */
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
-  background-color: #464646;
+  background-position: center center;
+  background-image: url('@/assets/background.jpeg');
 }
 </style>

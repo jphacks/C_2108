@@ -8,9 +8,6 @@
         <v-divider :key="index" />
         <v-list-item :key="index">
           <v-row>
-            <v-divider />
-          </v-row>
-          <v-row>
             <v-list-item-content color="grey lighten-4">
               <v-card-title class="justify-center">
                 {{ comment.input }}
