@@ -106,24 +106,16 @@ export default {
 </script>
 
 <style>
-@font-face {
-  font-family: 'MyFont';
-  src: url(/Users/yanjini/Downloads/03.otf);
-}
-
 .justify-center {
   color: #eeffff;
   opacity: 0.9;
-  font-family: MyFont;
 }
 .text-right {
   color: #eeffff;
   opacity: 0.9;
-  font-family: MyFont;
 }
 .list {
   color: #eeffff;
   opacity: 0.9;
-  font-family: MyFont;
 }
 </style>

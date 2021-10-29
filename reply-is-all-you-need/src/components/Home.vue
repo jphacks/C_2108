@@ -100,12 +100,4 @@ export default {
   background-position: center center;
   background-image: url('@/assets/background.jpeg');
 }
-
-@font-face {
-  font-family: 'MyFont2';
-  src: url(/Users/yanjini/Downloads/005.ttf);
-}
-.home {
-  font-family: MyFont2;
-}
 </style>
