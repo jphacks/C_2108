@@ -1,39 +1,43 @@
 <template>
   <v-container>
-    <v-btn rounded color="grey lighten-4" @click="updateComments">
+    <v-btn rounded color="grey lighten-4" class="list" @click="updateComments">
       リスト更新
     </v-btn>
 
-    <v-list>
+    <v-list color="rgba(255, 255, 255, 0.2)">
       <template v-for="(comment, index) in comments">
         <v-divider :key="index" />
         <v-list-item :key="index">
           <v-row>
-            <v-list-item-content color="grey lighten-4">
+            <v-list-item-content>
               <v-card-title class="justify-center">
                 {{ comment.input }}
               </v-card-title>
 
-              <v-list-item-action class="text-right">
+              <v-list-item-action>
                 <v-row justify="space-between">
                   <v-col cols="2">
                     <v-btn
                       icon
-                      color="grey darken-3"
+                      color="rgba(255, 255, 240, 0.8)"
                       @click="showReply(comment.date)"
                     >
                       <v-icon>mdi-comment-outline</v-icon></v-btn
                     >
                   </v-col>
                   <v-col cols="2">
-                    <v-btn icon @click="deleteMemo(comment.date)">
+                    <v-btn
+                      icon
+                      color="rgba(255, 255, 240, 0.8)"
+                      @click="deleteMemo(comment.date)"
+                    >
                       <v-icon>mdi-delete-outline</v-icon>
                     </v-btn>
                   </v-col>
                   <v-col align-self="center">
-                    <v-list-item-subtitle class="text-right">
+                    <v-card-text class="text-right">
                       {{ comment.date }}
-                    </v-list-item-subtitle>
+                    </v-card-text>
                   </v-col>
                   <v-col cols="1" />
                 </v-row>
@@ -102,7 +106,16 @@ export default {
 </script>
 
 <style>
-.line {
-  opacity: 0.3;
+.justify-center {
+  color: #eeffff;
+  opacity: 0.9;
+}
+.text-right {
+  color: #eeffff;
+  opacity: 0.9;
+}
+.list {
+  color: #eeffff;
+  opacity: 0.9;
 }
 </style>

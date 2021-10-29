@@ -8,7 +8,7 @@
             gradient="to bottom left, rgba(0,5,30,.8), rgba(25,32,72,.7)"
           />
         </template>
-        <v-app-bar-title>Memo</v-app-bar-title>
+        <v-app-bar-title class="home">Reply is All you need</v-app-bar-title>
         <v-spacer />
         <v-btn class="mt-3" text>
           log out
