@@ -7,13 +7,11 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - master
 jobs:
-  env:
-      VUE_APP_API_URL: ${{ secrets.VUE_APP_API_URL }}
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd reply-is-all-you-need && npm ci && npm run build
+      - run: cd reply-is-all-you-need && touch .env && echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env && npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
