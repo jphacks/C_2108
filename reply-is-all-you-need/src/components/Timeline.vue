@@ -2,7 +2,7 @@
   <v-container>
     <template v-for="(comment, index) in comments">
       <v-divider :key="`divider-${index}`" />
-      <v-list-item :key="`item-${index}`" class="pt-5">
+      <v-list-item :key="`item-${index}`" class="pt-2">
         <v-row>
           <v-list-item-content>
             <v-row align="center">
@@ -12,13 +12,13 @@
                 </v-avatar>
               </v-col>
               <v-col cols="9">
-                <v-card-title class="comment">
+                <v-card-title class="comment text-body-1">
                   {{ comment.input }}
                 </v-card-title>
               </v-col>
               <v-spacer />
             </v-row>
-            <v-list-item-action>
+            <v-list-item-action class="mt-n5">
               <v-row>
                 <v-col align-self="center" cols="2">
                   <v-btn
@@ -63,8 +63,8 @@
                       <img :src="comment.replyCharas[replyIndex].src" />
                     </v-avatar>
                   </v-col>
-                  <v-col cols="9">
-                    <v-card-title class="comment">
+                  <v-col cols="9" class="py-5">
+                    <v-card-title class="comment text-body-2">
                       {{ replyText.reply_text }}
                     </v-card-title>
                   </v-col>
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import firebase, { db } from '@/plugins/firebase'
+import { db } from '@/plugins/firebase'
 import moment from 'moment'
 import { mapState } from 'vuex'
 
@@ -101,11 +101,7 @@ export default {
   mounted() {
     setTimeout(() => {
       const memosRef = db.collection('memos')
-      const query = memosRef.where(
-        'userId',
-        '==',
-        firebase.auth().currentUser.uid
-      )
+      const query = memosRef.where('userId', '==', this.user.uid)
       this.unsubscribe = query.orderBy('date', 'asc').onSnapshot(snapShot => {
         snapShot.docChanges().forEach(change => {
           // 追加

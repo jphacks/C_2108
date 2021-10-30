@@ -1,20 +1,7 @@
 <template>
   <v-app id="app">
     <div class="bg">
-      <v-app-bar
-        max-height="70px"
-        dark
-        shrink-on-scroll
-        prominent
-        fade-img-on-scroll
-        app
-      >
-        <template #img="{ props }">
-          <v-img
-            v-bind="props"
-            gradient="to bottom left, rgba(0,5,30,.8), rgba(25,32,72,.7)"
-          />
-        </template>
+      <v-app-bar max-height="70px" dark shrink-on-scroll prominent app>
         <v-spacer />
         <v-btn class="mt-3" text @click="logout()">
           log out
