@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from '@/plugins/firebase'
+
 import { mapActions } from 'vuex'
 export default {
   name: 'App',
@@ -15,12 +16,7 @@ export default {
       if (user) {
         this.setLoginUser(user)
       } else {
-        firebase
-          .auth()
-          .signOut()
-          .then(() => {
-            this.deleteLoginUser()
-          })
+        this.deleteLoginUser()
       }
     })
   },

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '@/store/store'
+// import firebase from '@/plugins/firebase'
 
 import Home from '@/components/Home.vue'
 import Welcome from '@/components/Welcome.vue'
@@ -9,13 +9,13 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home,
     meta: { requiresAuth: true },
   },
   {
-    path: '/welcome',
+    path: '/',
     name: 'Welcome',
     component: Welcome,
   },
@@ -34,16 +34,15 @@ const router = new VueRouter({
   },
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.state.user !== null) {
-      next()
-    } else {
-      next({ name: 'Welcome' })
-    }
-  } else {
-    next()
-  }
-})
-
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     firebase.auth().onAuthStateChanged(user => {
+//       if (user) {
+//         next()
+//       } else {
+//         next({ name: 'Welcome' })
+//       }
+//     })
+//   }
+// })
 export default router

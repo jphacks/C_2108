@@ -1,9 +1,9 @@
 <template>
   <v-app id="app">
     <div class="bg">
-      <v-app-bar max-height="70px" dark shrink-on-scroll prominent app>
+      <v-app-bar max-height="50px" dark app>
         <v-spacer />
-        <v-btn class="mt-3" text @click="logout()">
+        <v-btn class="mb-1" text @click="logout()">
           log out
         </v-btn>
       </v-app-bar>

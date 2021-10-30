@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <template v-for="(comment, index) in comments">
+    <template v-for="(comment, index) in comments" class="mt-n12">
       <v-divider :key="`divider-${index}`" />
-      <v-list-item :key="`item-${index}`" class="pt-2">
+      <v-list-item :key="`item-${index}`" class="mt-2">
         <v-row>
           <v-list-item-content>
             <v-row align="center">
@@ -50,6 +50,7 @@
               <v-card
                 v-if="nowMemoId == comment.memoId"
                 v-show="isShowReply"
+                class="pl-4"
                 color="rgba(0, 0, 0, 0.2)"
                 elevation="5"
               >
