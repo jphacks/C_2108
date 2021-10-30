@@ -1,13 +1,11 @@
 # Reply Is All You Need
 
-![](./logo.png)![IMAGE ALT TEXT HERE](./sample.png)
-<img src="./sample.png", width=50%>
+![IMAGE ALT TEXT HERE](./logo_and_sample.png)
 
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）　
 「昨日アイデアが出たと思ったのに、人と話す機会がなくて忘れてしまった！」<br>
 こんなことありませんか？
-
 
 Reply Is All You Needは、ふと湧いて出たアイデアを
 
