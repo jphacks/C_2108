@@ -1,6 +1,6 @@
 # Reply Is All You Need
 
-![IMAGE ALT TEXT HERE](./sample.png)
+![](./logo.png)![IMAGE ALT TEXT HERE](./sample.png)
 
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）　
