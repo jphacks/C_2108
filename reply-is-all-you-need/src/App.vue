@@ -15,7 +15,12 @@ export default {
       if (user) {
         this.setLoginUser(user)
       } else {
-        this.deleteLoginUser()
+        firebase
+          .auth()
+          .signOut()
+          .then(() => {
+            this.deleteLoginUser()
+          })
       }
     })
   },

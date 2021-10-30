@@ -24,23 +24,29 @@
       <v-main>
         <v-dialog v-model="dialog">
           <template #activator="{ on, attrs }">
-            <v-btn
-              class="mb-12"
-              color="pink"
-              v-bind="attrs"
-              fixed
-              bottom
-              dark
-              absolute
-              right
-              fab
-              v-on="on"
-            >
-              <v-icon>mdi-plus</v-icon>
-            </v-btn>
+            <div v-bind="attrs" v-on="on">
+              <v-tooltip>
+                <template #activator="{ toolOn, toolAttrs }">
+                  <v-btn
+                    class="mb-12"
+                    color="pink"
+                    v-bind="toolAttrs"
+                    fixed
+                    bottom
+                    dark
+                    absolute
+                    right
+                    fab
+                    v-on="toolOn"
+                  >
+                    <v-icon>mdi-plus</v-icon>
+                  </v-btn>
+                </template>
+              </v-tooltip>
+            </div>
           </template>
-
-          <Add />
+          <span>メモを書く</span>
+          <Add @dialogClose="dialog = false" />
         </v-dialog>
 
         <Timeline />
@@ -56,7 +62,7 @@ import Timeline from '@/components/Timeline.vue'
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
     Add,
     Timeline,
@@ -96,7 +102,7 @@ export default {
   display: block;
 } */
 .bg {
-  height: 100vh; /* 全画面表示 */
+  min-height: 100%; /* 全画面表示 */
   background: linear-gradient(
     to bottom left,
     rgba(0, 5, 30, 0.8),

@@ -6,7 +6,26 @@
           Reply is all you need
         </v-row>
         <v-row align="center" justify="center">
-          <button-google-login />
+          <v-progress-circular
+            v-show="isLoading"
+            :size="70"
+            :width="7"
+            color="white"
+            indeterminate
+          />
+        </v-row>
+        <v-row align="center" justify="center">
+          <v-container>
+            <v-row>
+              <v-col>
+                <img
+                  :src="googleButtonRef"
+                  class="google-button"
+                  @click="googleLogin"
+                />
+              </v-col>
+            </v-row>
+          </v-container>
         </v-row>
       </v-container>
     </v-main>
@@ -14,16 +33,16 @@
 </template>
 
 <script>
-import firebase from 'firebase/app'
-import ButtonGoogleLogin from '@/components/ButtonGoogleLogin.vue'
+import firebase from '@/plugins/firebase'
 
 export default {
   name: 'Welcome',
-  components: {
-    ButtonGoogleLogin,
-  },
+  components: {},
   data() {
-    return {}
+    return {
+      isLoading: false,
+      googleButtonRef: require('@/assets/google_signin_buttons/web/2x/btn_google_signin_light_normal_web@2x.png'),
+    }
   },
   mounted() {
     firebase.auth().onAuthStateChanged(user => {
@@ -32,22 +51,18 @@ export default {
       }
     })
   },
-  methods: {},
+  methods: {
+    googleLogin() {
+      this.isLoading = true
+      firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+    },
+  },
 }
 </script>
 
 <style>
-/* .bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-} */
 .bg {
-  height: 100vh; /* 全画面表示 */
+  height: 100%; /* 全画面表示 */
 
   background: linear-gradient(
     to bottom left,
@@ -55,5 +70,8 @@ export default {
     rgba(25, 32, 72, 0.7)
   );
   /* background-image: url('@/assets/background.jpeg'); */
+}
+.google-button {
+  cursor: pointer;
 }
 </style>
