@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       isLoading: false,
-      googleButtonRef: require('@/assets/google_signin_buttons/web/2x/btn_google_signin_light_normal_web@2x.png'),
+      googleButtonRef: require('@/assets/google_signin_buttons/web/1x/btn_google_signin_light_normal_web.png'),
     }
   },
   mounted() {
